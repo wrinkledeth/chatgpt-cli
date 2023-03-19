@@ -1,14 +1,6 @@
 # ChatGPT CLI Tool
 
-## Links
-
-[openai platform](https://platform.openai.com/)
-
-[org settings](https://platform.openai.com/account/org-settings)
-
-[api reference](https://platform.openai.com/docs/api-reference)
-
-[api usage](https://platform.openai.com/account/usage)
+Supports code syntax highlighting, multi-line inputs, and automatic clipboard copy.
 
 ## .env
 
@@ -67,3 +59,13 @@ I apologize, but as an AI language model, I do not have the capability to know w
 
 > 
 ```
+
+## Links
+
+[Openai platform](https://platform.openai.com/)
+
+[Org settings](https://platform.openai.com/account/org-settings)
+
+[API reference](https://platform.openai.com/docs/api-reference)
+
+[API usage](https://platform.openai.com/account/usage)
