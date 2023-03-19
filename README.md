@@ -17,6 +17,16 @@ OPENAI_ORGANIZATION=***
 
 ## Usage
 
+Special Commands
+
+```bash
+messages: show current message list
+reset: reset the chat
+clear: clear the screen
+```
+
+Sample Usage
+
 ```text
 ➜  chatgpt-cli git:(main) python chat.py 
 Welcome to gpt-3.5-turbo!
