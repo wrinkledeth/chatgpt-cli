@@ -1,6 +1,10 @@
 # ChatGPT CLI Tool
 
-Supports code syntax highlighting, multi-line inputs, and automatic clipboard copy.
+Features
+
+- Automatic code syntax highlighting
+- multi-line inputs (type "eom" to terminate and send prompt)
+- automatically copies responses to clipboard
 
 ## .env
 
