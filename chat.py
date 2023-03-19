@@ -45,6 +45,10 @@ def main():
                 print("Chat reset!")
                 show_prompt = True
                 break
+            if line == "clear":
+                os.system("clear")
+                show_prompt = True
+                break
             if line == "messages":
                 for message in messages:
                     print(message)
