@@ -5,7 +5,8 @@ import pyperclip
 import re
 
 from pygments import highlight
-from pygments.lexers import get_lexer_by_name
+from pygments.lexers import guess_lexer, get_lexer_by_name
+from pygments.util import ClassNotFound
 from pygments.formatters import TerminalFormatter
 
 
@@ -24,7 +25,7 @@ def main():
     MODEL_ENGINE = "gpt-3.5-turbo"
 
     print(
-        f"Welcome to {MODEL_ENGINE}!\n1. Type 'reset' to reset the chat, or 'messages' to see the messages.\n2. Multi-line inputs are supported. Type 'eom' in a new line to send your message.\n3. Replies are automatically copied to your clipboard.\n"
+        f"Welcome to {MODEL_ENGINE}!\n1. 'reset' to reset the chat, or 'messages' to see the messages.\n2. Multi-line inputs are supported. Type 'eom' in a new line to send your message.\n3. Replies are automatically copied to your clipboard.\n"
     )
     messages = []
     show_prompt = True
@@ -75,21 +76,37 @@ def fancy_print(markdown_str):
 
     # highlight code blocks and print non-code parts
     for i, match in enumerate(code_pattern.finditer(markdown_str)):
-        # print("Text before the code block #" + str(i + 1) + ":")
+        # Print text before code block
         print(markdown_str[: match.start()])
-        # print("Highlighting code block #" + str(i + 1) + ":")
+
+        # Determine the lexer for the code block
         lexer_alias = match.group(1)
-        if not lexer_alias:
-            print("(No lexer specified, using Python lexer)")
-            lexer_alias = "python"
-        lexer = get_lexer_by_name(lexer_alias, stripall=True)
+        if lexer_alias:
+            try:
+                lexer = get_lexer_by_name(lexer_alias, stripall=True)
+            except ClassNotFound:
+                lexer = None
+        else:
+            lexer = None
+        if lexer is None:
+            lexer = guess_lexer(match.group(2))
+            if lexer is None:
+                print("Could not determine the programming language.")
+                print("```")
+                print(match.group(2))
+                print("```")
+                markdown_str = markdown_str[match.end() :]
+                continue
+
+        # Print Highlighted Code block
         formatter = TerminalFormatter()
         code_block = match.group(2)
-        print("(Start Code Block)")
+        print(f"```{lexer.name}")
         print(highlight(code_block, lexer, formatter))
-        print("(End Code Block)")
+        print("```")
         markdown_str = markdown_str[match.end() :]
-    # print("Text after the last code block:")
+
+    # # Print text after last code block
     print(markdown_str)
 
 
