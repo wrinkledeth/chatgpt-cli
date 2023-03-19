@@ -3,20 +3,14 @@
 Features
 
 - Automatic code syntax highlighting
-- multi-line inputs (type "eom" to terminate and send prompt)
-- automatically copies responses to clipboard
+- Multi-line inputs (type "eom" to terminate and send prompt)
+- Responses automatically copied to clipboard
 
-## .env
+Todo
 
-```bash
-➜ cat .env          
-OPENAI_API_KEY=***
-OPENAI_ORGANIZATION=*** 
-```
+- [ ] Prompt / Response Logging
 
-## Usage
-
-Special Commands
+## Special Commands
 
 ```bash
 messages: show current message list
@@ -24,10 +18,16 @@ reset: reset the chat
 clear: clear the screen
 ```
 
-Sample Usage
+## Sample Usage
+
+```bash
+➜ cat .env          
+OPENAI_API_KEY=***
+OPENAI_ORGANIZATION=*** 
+```
 
 ```text
-➜  chatgpt-cli git:(main) python chat.py 
+➜  python chat.py 
 Welcome to gpt-3.5-turbo!
 1. Type 'reset' to reset the chat, or 'messages' to see the messages.
 2. Multi-line inputs are supported. Type 'eom' in a new line to send your message.
