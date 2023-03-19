@@ -3,8 +3,11 @@
 ## Links
 
 [openai platform](https://platform.openai.com/)
+
 [org settings](https://platform.openai.com/account/org-settings)
+
 [api reference](https://platform.openai.com/docs/api-reference)
+
 [api usage](https://platform.openai.com/account/usage)
 
 ## .env
